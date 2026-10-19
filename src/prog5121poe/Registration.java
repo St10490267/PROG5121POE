@@ -8,15 +8,10 @@ public class Registration {
     private String password;
     private String cellphone;
 
-    // ----- USERNAME CHECK -----
-    // Must contain an underscore and be no more than 5 characters long
     public boolean checkUsername(String username) {
         return username.contains("_") && username.length() <= 5;
     }
 
-    // ----- PASSWORD CHECK -----
-    // Must be at least 8 characters, contain a capital letter,
-    // a number, and a special character
     public boolean checkPasswordComplexity(String password) {
         if (password.length() < 8) {
             return false;
@@ -29,15 +24,11 @@ public class Registration {
         return hasCapital && hasNumber && hasSpecialChar;
     }
 
-    // ----- CELLPHONE CHECK -----
-    // Must be a South African number in the format +27 followed by 9 digits
     public boolean checkCellPhoneNumber(String cellphone) {
         String regex = "^\\+27[0-9]{9}$";
         return Pattern.matches(regex, cellphone);
     }
 
-    // ----- REGISTER METHOD -----
-    // Runs all three checks and returns an appropriate message
     public String registerUser(String username, String password, String cellphone) {
         this.username = username;
         this.password = password;
